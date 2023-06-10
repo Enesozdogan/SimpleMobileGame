@@ -6,6 +6,7 @@ public class CreatePrimitive : MonoBehaviour
 {
 
     public List<PrimitiveType> primitives = new List<PrimitiveType>();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +29,8 @@ public class CreatePrimitive : MonoBehaviour
         GameObject go = GameObject.CreatePrimitive(primitives[Random.Range(0,primitives.Count)]);
         go.transform.position = new Vector2(Random.Range(-2.33f, 2.33f), Random.Range(3.47f, 4.67f));
         go.AddComponent(typeof(Rigidbody));
+        float yVel = -5;
+        go.GetComponent<Rigidbody>().useGravity = false;
+        go.GetComponent<Rigidbody>().velocity = new Vector3(0,yVel, 0);
     }
 }
